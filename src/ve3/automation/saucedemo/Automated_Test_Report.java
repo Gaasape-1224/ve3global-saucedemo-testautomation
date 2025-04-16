@@ -25,14 +25,10 @@ public class Automated_Test_Report {
 
         //FileInputStream fis = new FileInputStream("./projects/saucedemo.xlsx");
         FileInputStream fis = new FileInputStream("./projects/saucedemo.xlsx");
-        System.out.println("Debuging 27" + fis.toString());
         Workbook wb = WorkbookFactory.create(fis);
-        System.out.println("Line 29");
         Sheet sheet = wb.getSheet("sheet1");
-        System.out.println("Line 31");
 
         int rowCount = sheet.getLastRowNum();
-
         for (int i = 1; i <= rowCount; i++) {
             Row row = sheet.getRow(i);
             if (row != null) {
@@ -68,8 +64,7 @@ public class Automated_Test_Report {
             }
         }
 
-        System.out.println("\n🔁 Logging in with first user for full flow...");
-
+        System.out.println("\n Logging in with first user for full flow");
         Row firstRow = sheet.getRow(1);
         if (firstRow != null) {
             String firstUsername = firstRow.getCell(0).getStringCellValue();
@@ -85,7 +80,6 @@ public class Automated_Test_Report {
                 driver.findElement(By.id("login-button")).click();
 
                 boolean isHomePage = driver.findElements(By.className("inventory_list")).size() > 0;
-
                 if (isHomePage) {
                     System.out.println("✅ Logged in with first user: " + firstUsername);
 
@@ -151,9 +145,7 @@ public class Automated_Test_Report {
     }
 
     public static void logResult(String testName, String status, String screenshot) {
-        System.out.println("\n----------------------------------");
-        System.out.println("Test Name: " + testName);
-        System.out.println("Status: " + status);
+        System.out.println("Test Name: " + testName + "Status: " + status);
         if (screenshot != null) {
             System.out.println("Screenshot: ./screenshots/" + screenshot);
         }
